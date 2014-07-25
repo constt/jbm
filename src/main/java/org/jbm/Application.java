@@ -18,15 +18,6 @@ public class Application {
     private static List<ClassElement> classes;
 
     public static void main(String[] args) {
-        List<String> st = ASMUtil.parameters("(IILah;[Lab;IS)V");
-      /*  classes = ASMUtil.load(new File("./gamepack.jar"));
-        for (ClassElement element : classes) {
-            for (MethodElement ele : element.methods()) {
-                for (AbstractInstruction ain : ele.instructions()) {
-                    System.out.println(ain.format());
-                }
-            }
-        }*/
         Manager.get(MainPresenter.class).show();
     }
 
