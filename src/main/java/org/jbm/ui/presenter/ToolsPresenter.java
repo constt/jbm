@@ -28,21 +28,6 @@ public class ToolsPresenter extends Presenter<ToolsView, ToolsModel> {
     public void hide() {
     }
 
-    public void open(ClassElement element) {
-        boolean exists = false;
-        if (model().openClasses().contains(element)) {
-            for (ToolsTab tab : model().tabs()) {
-                if (tab.element().equals(element)) {
-                    exists = true;
-                }
-            }
-        }
-        if (!exists) {
-            model().add(new ToolsTab(element));
-        }
-        view().tabbedPane().setSelectedIndex(model().openClasses().indexOf(element));
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
     }

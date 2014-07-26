@@ -24,13 +24,13 @@ public class ASMUtil {
         for (Field f : Opcodes.class.getFields()) {
             f.setAccessible(true);
             try {
-                if (f.getName().contains("TOP") ||
+                if (!f.getName().contains("IF") && (f.getName().contains("TOP") ||
                         f.getName().contains("INTEGER") ||
                         f.getName().contains("FLOAT") ||
                         f.getName().contains("DOUBLE") ||
                         f.getName().contains("LONG") ||
                         f.getName().contains("NULL") ||
-                        f.getName().contains("THIS")) {
+                        f.getName().contains("THIS"))) {
                     OPCODE_MAP.put(ReflectionUtil.<Integer>get("owner", Opcodes.class), f.getName());
                     continue;
                 }

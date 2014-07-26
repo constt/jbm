@@ -2,15 +2,13 @@ package org.jbm.ui.handler;
 
 import org.jbm.ui.evt.EventBus;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.*;
+import java.awt.event.*;
 
 /**
  * @author : const_
  */
-public class InputHandler implements KeyListener, MouseListener {
+public class InputHandler implements KeyListener, MouseListener, MouseMotionListener {
     @Override
     public void keyTyped(KeyEvent e) {
         EventBus.handle(e);
@@ -48,6 +46,16 @@ public class InputHandler implements KeyListener, MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+        EventBus.handle(e);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        EventBus.handle(e);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
         EventBus.handle(e);
     }
 }

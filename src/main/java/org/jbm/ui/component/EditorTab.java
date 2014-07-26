@@ -4,6 +4,8 @@ import org.jbm.element.ClassElement;
 import org.jbm.element.FieldElement;
 import org.jbm.element.MethodElement;
 import org.jbm.instruction.AbstractInstruction;
+import org.jbm.ui.Manager;
+import org.jbm.ui.presenter.ToolsPresenter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,6 +27,7 @@ public class EditorTab extends Tab {
     @Override
     public void init() {
         content = new JList<>();
+        content.addMouseMotionListener(Manager.get(ToolsPresenter.class));
         DefaultListModel<Object> model = new DefaultListModel<>();
         ClassElement element = toolsTab().element();
         model.addElement(" ");

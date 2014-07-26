@@ -3,6 +3,8 @@ package org.jbm.instruction.impl;
 import org.jbm.Application;
 import org.jbm.element.ClassElement;
 import org.jbm.element.MethodElement;
+import org.jbm.ui.Manager;
+import org.jbm.ui.presenter.ClassTreePresenter;
 import org.jbm.util.ReflectionUtil;
 import org.objectweb.asm.tree.AbstractInsnNode;
 
@@ -44,6 +46,11 @@ public abstract class NamedInstruction<T extends AbstractInsnNode> extends Descr
      * @return owner
      */
     public ClassElement owner() {
-        return Application.get(ownerName());
+        for(ClassElement element : Manager.get(ClassTreePresenter.class).model().classes()) {
+            if(element.name().equals(ownerName())) {
+                return element;
+            }
+        }
+        return null;
     }
 }

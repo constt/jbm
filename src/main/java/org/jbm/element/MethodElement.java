@@ -12,6 +12,7 @@ import org.jbm.instruction.impl.jump.IfInstruction;
 import org.jbm.instruction.impl.operand.LdcInstruction;
 import org.jbm.instruction.impl.operand.LoadInstruction;
 import org.jbm.instruction.impl.operand.PushInstruction;
+import org.jbm.instruction.impl.operand.StoreInstruction;
 import org.jbm.instruction.impl.simple.BasicInstruction;
 import org.jbm.instruction.impl.simple.IncrementalInstruction;
 import org.jbm.instruction.impl.simple.LabelInstruction;
@@ -54,7 +55,26 @@ public class MethodElement {
                     instructions.add(new MethodInstruction(this, (MethodInsnNode) ain));
                     break;
                 case AbstractInsnNode.VAR_INSN:
-                    instructions.add(new LoadInstruction(this, (VarInsnNode) ain));
+                    switch (ain.getOpcode()) {
+                        case Opcodes.ALOAD:
+                        case Opcodes.ILOAD:
+                        case Opcodes.LLOAD:
+                        case Opcodes.AALOAD:
+                        case Opcodes.BALOAD:
+                        case Opcodes.CALOAD:
+                        case Opcodes.DALOAD:
+                        case Opcodes.DLOAD:
+                        case Opcodes.FALOAD:
+                        case Opcodes.FLOAD:
+                        case Opcodes.IALOAD:
+                        case Opcodes.LALOAD:
+                        case Opcodes.SALOAD:
+                            instructions.add(new LoadInstruction(this, (VarInsnNode) ain));
+                            break;
+                        default:
+                            instructions.add(new StoreInstruction(this, (VarInsnNode) ain));
+                            break;
+                    }
                     break;
                 case AbstractInsnNode.INT_INSN:
                     instructions.add(new PushInstruction(this, (IntInsnNode) ain));
