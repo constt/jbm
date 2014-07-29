@@ -28,6 +28,10 @@ public class ToolsTab extends JPanel {
         add(tabbedPane);
     }
 
+    public Tab current() {
+        return (Tab) tabbedPane.getComponentAt(tabbedPane.getSelectedIndex());
+    }
+
     public ClassElement element() {
         return element;
     }

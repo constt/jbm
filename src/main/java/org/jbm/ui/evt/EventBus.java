@@ -1,25 +1,37 @@
 package org.jbm.ui.evt;
 
-import org.jbm.instruction.AbstractInstruction;
+import org.jbm.ui.Manager;
+import org.jbm.ui.presenter.ToolsPresenter;
+import org.jbm.util.ReflectionUtil;
 
-import javax.swing.*;
-import java.awt.event.InputEvent;
-import java.awt.event.MouseEvent;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author : const_
  */
 public class EventBus {
 
-    public static <T extends InputEvent> void handle(T evt) {
-        if (evt.getSource() instanceof JList && evt instanceof MouseEvent) {
-            JList list = (JList) evt.getSource();
-            ListModel model = list.getModel();
-            int index = list.locationToIndex(((MouseEvent) evt).getPoint());
-            if (index > -1) {
-                Object insn = model.getElementAt(index);
-                if (insn instanceof AbstractInstruction) {
-                    list.setToolTipText(((AbstractInstruction) insn).definition());
+
+    private static final List<Method> EVENT_PROCESSORS = new LinkedList<>();
+
+    static {
+        EVENT_PROCESSORS.addAll(ReflectionUtil.annotated(EventProcessor.class));
+    }
+
+    public static <T extends Event> void handle(T evt) {
+        if (evt instanceof ListMouseMoveEvent) {
+            for (Method m : EVENT_PROCESSORS) {
+                for (Class<?> type : m.getParameterTypes()) {
+                    if (type.equals(evt.getClass())) {
+                        try {
+                            m.invoke(Manager.get(ToolsPresenter.class).view().current().current(), evt);
+                        } catch (IllegalAccessException | InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
         }

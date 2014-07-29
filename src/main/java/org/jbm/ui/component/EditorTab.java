@@ -5,6 +5,8 @@ import org.jbm.element.FieldElement;
 import org.jbm.element.MethodElement;
 import org.jbm.instruction.AbstractInstruction;
 import org.jbm.ui.Manager;
+import org.jbm.ui.evt.EventProcessor;
+import org.jbm.ui.evt.ListMouseMoveEvent;
 import org.jbm.ui.presenter.ToolsPresenter;
 
 import javax.swing.*;
@@ -53,5 +55,18 @@ public class EditorTab extends Tab {
                 ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         add(scroller);
+    }
+
+    @EventProcessor
+    public void mouseMoved(ListMouseMoveEvent evt) {
+        JList list = (JList) evt.event().getSource();
+        ListModel model = list.getModel();
+        int index = list.locationToIndex(evt.event().getPoint());
+        if (index > -1) {
+            Object insn = model.getElementAt(index);
+            if (insn instanceof AbstractInstruction) {
+                list.setToolTipText(((AbstractInstruction) insn).definition());
+            }
+        }
     }
 }

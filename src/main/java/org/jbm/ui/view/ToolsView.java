@@ -26,6 +26,10 @@ public class ToolsView extends View<ToolsPresenter, ToolsModel> {
         return tabbedPane;
     }
 
+    public ToolsTab current() {
+        return (ToolsTab) tabbedPane.getComponentAt(tabbedPane.getSelectedIndex());
+    }
+
     @Override
     public void refresh() {
         int size = tabbedPane.getTabCount();

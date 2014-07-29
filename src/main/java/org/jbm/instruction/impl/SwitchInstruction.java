@@ -38,13 +38,4 @@ public abstract class SwitchInstruction<T extends AbstractInsnNode> extends Abst
         }
         return idxs;
     }
-    @Override
-    public String format() {
-        return null;
-    }
-
-    @Override
-    public String definition() {
-        return null;
-    }
 }
