@@ -6,3 +6,4 @@ Java Bytecode Modifier
 ###### Maintained by FFY00 (Anubis)
 
 - Build is now working for maven
+- Maven will now generate a MANIFEST file for the jar
