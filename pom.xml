@@ -21,21 +21,21 @@
                <target>1.7</target>
             </configuration>
          </plugin>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.0.2</version>
+            <configuration>
+               <archive>
+                  <manifest>
+                     <addClasspath>true</addClasspath>
+                     <classpathPrefix>lib/</classpathPrefix>
+                     <mainClass>org.jbm.Application</mainClass>
+                  </manifest>
+               </archive>
+            </configuration>
+         </plugin>
       </plugins>
-      <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-         <artifactId>maven-jar-plugin</artifactId>
-         <version>3.0.2</version>
-         <configuration>
-            <archive>
-               <manifest>
-                  <addClasspath>true</addClasspath>
-                  <classpathPrefix>lib/</classpathPrefix>
-                  <mainClass>org.jbm.Application</mainClass>
-               </manifest>
-            </archive>
-         </configuration>
-      </plugin>
    </build>
    
    <dependencies>
