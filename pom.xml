@@ -32,6 +32,11 @@
          <artifactId>jaxws-rt</artifactId>
          <version>2.1.4</version>
       </dependency>
+      <dependency>
+         <groupId>org.openjdk.jmh</groupId>
+         <artifactId>jmh-generator-asm</artifactId>
+         <version>1.17.4</version>
+      </dependency>
    </dependencies>
 </project>
 
