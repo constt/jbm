@@ -22,6 +22,7 @@
                   <arg>-verbose</arg>
                   <arg>-Xlint:all,-options,-path</arg>
                </compilerArgs>
+               <fork>true</fork>
             </configuration>
          </plugin>
       </plugins>
@@ -48,7 +49,6 @@
          <artifactId>rt</artifactId>
          <scope>system</scope>
          <systemPath>/usr/lib/jvm/java-6-oracle/jre/lib/rt.jar</systemPath>
-         <fork>true</fork>
       </dependency>
    </dependencies>
 </project>
