@@ -4,26 +4,29 @@
    <groupId>JBM</groupId>
    <artifactId>JBM</artifactId>
    <version>1.0-SNAPSHOT</version>
-
+   
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <maven.compiler.source>1.6</maven.compiler.source>
       <maven.compiler.target>1.6</maven.compiler.target>
    </properties>
-
-   <plugins>
-      <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-         <artifactId>maven-compiler-plugin</artifactId>
-         <version>3.6.1</version>
-         <configuration>
-            <compilerArgs>
-               <arg>-XDignore.symbol.file</arg>
-            </compilerArgs>
-         </configuration>
-      </plugin>
-   </plugins>
-
+   
+   <build>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.6.1</version>
+            <configuration>
+               <compilerArgs>
+                  <arg>-verbose</arg>
+                  <arg>-Xlint:all,-options,-path</arg>
+               </compilerArgs>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+   
    <dependencies>
       <dependency>
          <groupId>com.google.inject</groupId>
