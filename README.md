@@ -3,6 +3,6 @@ JBM [![Follow](https://img.shields.io/twitter/follow/MyClaraOswin.svg)](http://t
 
 Java Bytecode Modifier
 
-##### Maintained by FFY00 (Anubis)
+###### Maintained by FFY00 (Anubis)
 
-Build is now working for maven
+- Build is now working for maven
