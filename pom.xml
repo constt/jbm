@@ -44,11 +44,5 @@
          <artifactId>reflections</artifactId>
          <version>0.9.9-RC1</version>
       </dependency>
-      <dependency>
-         <groupId>java</groupId>
-         <artifactId>rt</artifactId>
-         <scope>system</scope>
-         <systemPath>/usr/lib/jvm/java-6-oracle/jre/lib/rt.jar</systemPath>
-      </dependency>
    </dependencies>
 </project>
