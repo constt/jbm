@@ -34,7 +34,7 @@
       </dependency>
       <dependency>
          <groupId>org.openjdk.jmh</groupId>
-         <artifactId>jmh-generator-asm</artifactId>
+         <artifactId>jmh-core</artifactId>
          <version>1.17.4</version>
       </dependency>
    </dependencies>
