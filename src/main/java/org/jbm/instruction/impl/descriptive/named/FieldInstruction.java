@@ -1,6 +1,6 @@
 package org.jbm.instruction.impl.descriptive.named;
 
-import com.sun.xml.internal.ws.org.objectweb.asm.Opcodes;
+import org.objectweb.asm.Opcodes;
 import org.jbm.element.MethodElement;
 import org.jbm.instruction.impl.NamedInstruction;
 import org.jbm.util.HTML;
